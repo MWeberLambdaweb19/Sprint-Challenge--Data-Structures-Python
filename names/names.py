@@ -18,11 +18,44 @@ duplicates = []  # Return the list of duplicates in this data structure
 #         if name_1 == name_2:
 #             duplicates.append(name_1)
 
-def namechecker(name1, name2):
-    for i, x in name1 and name2:
-        if i == x:
-            duplicates.append(i)
-namechecker(names_1, names_2)
+class BinarySearchTree:
+    def __init__(self, value):
+        self.value = []
+        self.left = None
+        self.right = None
+
+    def insert(self, value):
+        if self.value is None:
+            BinarySearchTree(value)
+        if value >= self.value:
+            if not self.right:
+                self.right = BinarySearchTree(value)
+            else:
+                self.right.insert(value)
+        if value < self.value:
+            if not self.left:
+                self.left = BinarySearchTree(value)
+            else:
+                self.left.insert(value)
+    
+    def contains(self, target):
+        if target == self.value:
+            duplicates.append(target)
+
+# for i in names_1:
+#     first = BinarySearchTree(i)
+# for j in names_2:
+#     second = BinarySearchTree(j)
+       
+# first.contains(second)
+
+first = BinarySearchTree(names_1)
+second = BinarySearchTree(names_2)
+first.contains(second)
+
+## binary search tree!
+## build a bst names 1
+## contains with names 2
 
 end_time = time.time()
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
